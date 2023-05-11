@@ -1,0 +1,35 @@
+<mxfile host="65bd71144e">
+    <diagram id="2Aw8WYbAmVDfu-u_KksB" name="Page-1">
+        <mxGraphModel dx="746" dy="582" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="18" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="5" target="15">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Mybase" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="270" y="50" width="140" height="170" as="geometry">
+                        <mxRectangle x="390" y="250" width="80" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="- db_path:str&lt;br&gt;+ engine:object&lt;br&gt;+ Session:object&lt;br&gt;+ Base:object&lt;br&gt;+ Product:model&lt;br&gt;+ Detail:model" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="5">
+                    <mxGeometry y="26" width="140" height="104" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="+ create_db()&lt;br&gt;+ drop_db()" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="5">
+                    <mxGeometry y="130" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="ProductHandler" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="235" y="310" width="210" height="310" as="geometry">
+                        <mxRectangle x="390" y="250" width="80" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="+ engine:object&lt;br&gt;+ Session:object&lt;br&gt;+ Base:object&lt;br&gt;+ Product:model&lt;br&gt;+ Detail:model" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="15">
+                    <mxGeometry y="26" width="210" height="84" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="+ create_product()&lt;br&gt;+ get_product_data()&lt;br&gt;+ get_product_by_id()&lt;br&gt;+ update_product()&lt;br&gt;+ delete_product_by_id()&lt;br&gt;&lt;br&gt;+ create_product_detail()&lt;br&gt;+ get_product_detail_data()&lt;br&gt;+ get_product_detail_by_id()&lt;br&gt;+ update_product_detail_by_id_ts()&lt;br&gt;+ delete_product_by_id_ts()&lt;br&gt;&lt;br&gt;+ gen_random_data()" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="15">
+                    <mxGeometry y="110" width="210" height="200" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
