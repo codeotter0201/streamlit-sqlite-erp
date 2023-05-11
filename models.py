@@ -43,7 +43,7 @@ class MyBase:
             detail_ts = Column(DateTime, default=DateTime, primary_key=True)
             quantity = Column(Float, nullable=False)
             price = Column(Float, nullable=False)
-            type = Column(Enum('IN', 'OUT', name='type'), nullable=False)
+            type = Column(String, nullable=False)
             supplier = Column(String(256), nullable=True)
             note = Column(String(256), nullable=True)
 

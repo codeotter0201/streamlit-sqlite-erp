@@ -67,8 +67,8 @@ class ProductHandler(MyBase):
     def create_product＿detail(self, id, quantity, price, type, supplier, note=None):
         with self.Session() as session:
             t = pd.Timestamp.now()
-            t -= pd.Timedelta(pd.Series(range(3000)).sample(1).values[0], 'day')
-            t += pd.Timedelta(pd.Series(range(3000)).sample(1).values[0], 'day')
+            # t -= pd.Timedelta(pd.Series(range(3000)).sample(1).values[0], 'day')
+            # t += pd.Timedelta(pd.Series(range(3000)).sample(1).values[0], 'day')
             detail = self.detail(detail_ts=t , id=id, quantity=quantity, price=price, type=type, supplier=supplier, note=note)
             session.add(detail)
             session.commit()
