@@ -89,6 +89,14 @@ class ProductHandler(MyBase):
                         columns=['id', 'detail_ts', 'quantity', 'price', 'type', 'supplier', 'note'])
         return df.sort_values('detail_ts', ascending=False)
 
+    # 删除商品记录的函数
+    def delete_detail(self, ts):
+        with self.Session() as session:
+            detail = session.query(self.detail).filter_by(detail_ts=ts).delete()
+            # session.delete(detail)
+            session.commit()
+            return detail
+
     def gen_random_data(self):
         ph = self
         for g in ['男', '女', '中性']:
