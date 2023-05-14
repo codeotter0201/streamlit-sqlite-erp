@@ -18,6 +18,16 @@
 # 使用畫面
 ![](https://github.com/codeotter0201/erp/blob/master/erp.gif)
 
+# 快速使用
+```shell
+git clone https://github.com/codeotter0201/streamlit-sqlite-erp.git
+```
+
+```python
+pip install --no-cache-dir -r requirements.txt
+streamlit run main.py
+```
+
 # 未來優化方向
 ## 前端:
 * 客製化視覺化圖表
