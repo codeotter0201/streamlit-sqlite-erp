@@ -5,7 +5,7 @@ ph = st.session_state['ph']
 
 def get_cache_data():
     try:
-        return pd.read_pickle('data/temp_data.pkl')
+        return pd.read_pickle('data/cache.pkl')
     except:
         df = pd.DataFrame(
             dict(
@@ -15,19 +15,13 @@ def get_cache_data():
                 id=[]
             )
         )
-        df.to_pickle('data/temp_data.pkl')
+        df.to_pickle('data/cache.pkl')
         return df
 
 def add_cache_data(data:pd.DataFrame):
     df = get_cache_data()
     if data['id'].tolist()[0] not in df['id'].tolist():
-        pd.concat([df, data]).to_pickle('data/temp_data.pkl')
-
-# def delete_last_data():
-#     df = get_temp_data()
-#     if len(df) > 0:
-#         df = df.drop(df.index[-1])
-#         df.to_pickle('temp_data.pkl')
+        pd.concat([df, data]).to_pickle('data/cache.pkl')
 
 def reset_cache_data():
     pd.DataFrame(
