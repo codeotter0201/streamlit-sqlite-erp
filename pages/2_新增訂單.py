@@ -67,23 +67,34 @@ def main_section():
     #     if st.button('全部取消', use_container_width=True):
     #         all_data['刪除'] = False
 
+    
     edited_df = st.experimental_data_editor(all_data, use_container_width=True)
+    temp_df = edited_df[edited_df['刪除']].copy()
     st.subheader('刪除訂單')
     
-    if st.button('全部選取', use_container_width=True):
-        temp_df = edited_df
-    else:
-        temp_df = edited_df[edited_df['刪除']].copy()
-        temp_df.drop(columns=['刪除'], inplace=True, axis=1)
 
-    if st.button('全部取消', use_container_width=True):
-        temp_df = pd.DataFrame()
+    # col21, col22 = st.columns([1, 1])
+
+    # with col21:
+    #     if st.button('全部選取', use_container_width=True):
+    #         temp_df = edited_df
+    #     else:
+    #         temp_df = edited_df[edited_df['刪除']].copy()
+    #         temp_df.drop(columns=['刪除'], inplace=True, axis=1)
+
+    # with col22:
+    #     if st.button('全部取消', use_container_width=True):
+    #         temp_df = pd.DataFrame()
 
     st.dataframe(temp_df, use_container_width=True)
-    if st.button(f'刪除選取商品'):
+
+    
+    if st.button(f'刪除選取商品', use_container_width=True):
         for i, r in temp_df.iterrows():
             st.write(r.id)
             ph().delete_detail(ts=r.detail_ts)
+    
+    
 
 
     # id = st.multiselect('select_delete_product_details', all_data['id'].tolist(), label_visibility='hidden')
