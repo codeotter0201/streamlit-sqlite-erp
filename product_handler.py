@@ -64,9 +64,12 @@ class ProductHandler(MyBase):
         return df
 
     # 创建商品记录的函数
-    def create_product＿detail(self, id, quantity, price, type, supplier, note=None):
+    def create_product＿detail(self, id, quantity, price, type, supplier, note=None, detail_ts:pd.Timestamp=None):
         with self.Session() as session:
-            t = pd.Timestamp.now()
+            if detail_ts is None:
+                t = pd.Timestamp.now()
+            else:
+                t = detail_ts
             # t -= pd.Timedelta(pd.Series(range(3000)).sample(1).values[0], 'day')
             # t += pd.Timedelta(pd.Series(range(3000)).sample(1).values[0], 'day')
             detail = self.detail(detail_ts=t , id=id, quantity=quantity, price=price, type=type, supplier=supplier, note=note)
@@ -105,14 +108,16 @@ class ProductHandler(MyBase):
 
         type = ['IN', 'OUT']
         supplier = ['柏國', '蝦皮']
-        for _ in range(10):
-            for i in ph.get_product_data().id.sample(100).values:
+        days = pd.Series(range(1, 700, 3))
+        for _ in range(50):
+            for i in ph.get_product_data().id.sample(10).values:
                 for t in type:
                     for s in supplier:
-                        m = 3 if t == 'IN' else -1
+                        m = 2 if t == 'IN' else 1
                         ph.create_product＿detail(i, 
-                                                 pd.Series([50,150,250]).sample(1).values[0] * m, 
+                                                 pd.Series([50,100,150]).sample(1).values[0] * m, 
                                                  500 + pd.Series([100,500,1500]).sample(1).values[0], 
                                                  t, 
-                                                 s
+                                                 s,
+                                                 detail_ts=pd.Timestamp.now() - pd.Timedelta(days.sample(1).values[0]*m, 'day')
                                                  )
