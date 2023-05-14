@@ -3,9 +3,9 @@ import pandas as pd
 
 ph = st.session_state['ph']
 
-def get_temp_data():
+def get_cache_data():
     try:
-        return pd.read_pickle('temp_data.pkl')
+        return pd.read_pickle('data/temp_data.pkl')
     except:
         df = pd.DataFrame(
             dict(
@@ -15,13 +15,13 @@ def get_temp_data():
                 id=[]
             )
         )
-        df.to_pickle('temp_data.pkl')
+        df.to_pickle('data/temp_data.pkl')
         return df
 
-def add_temp_data(data:pd.DataFrame):
-    df = get_temp_data()
+def add_cache_data(data:pd.DataFrame):
+    df = get_cache_data()
     if data['id'].tolist()[0] not in df['id'].tolist():
-        pd.concat([df, data]).to_pickle('temp_data.pkl')
+        pd.concat([df, data]).to_pickle('data/temp_data.pkl')
 
 # def delete_last_data():
 #     df = get_temp_data()
@@ -29,7 +29,7 @@ def add_temp_data(data:pd.DataFrame):
 #         df = df.drop(df.index[-1])
 #         df.to_pickle('temp_data.pkl')
 
-def reset_temp_data():
+def reset_cache_data():
     pd.DataFrame(
         dict(
             name=[],
@@ -37,7 +37,7 @@ def reset_temp_data():
             size=[],
             id=[]
         )
-    ).to_pickle('temp_data.pkl')
+    ).to_pickle('data/cache.pkl')
 
 def add_product():
     col1, col2, col3 = st.columns(3)
@@ -56,12 +56,12 @@ def add_product():
     col1, col2 = st.columns(2)
     with col1:
         if st.button(f'加入清單', use_container_width=True):
-            add_temp_data(pd.DataFrame([df]))
+            add_cache_data(pd.DataFrame([df]))
     with col2:
         if st.button(f'清空清單', use_container_width=True):
-            reset_temp_data()
+            reset_cache_data()
 
-    all_data = get_temp_data()
+    all_data = get_cache_data()
     if len(all_data) > 0:
         st.dataframe(all_data, use_container_width=True)
     else:
@@ -73,7 +73,7 @@ def add_product():
         if st.button(f'新增所有商品', use_container_width=True):
             for v in all_data:
                 ph().create_product(**v)
-            reset_temp_data()
+            reset_cache_data()
             if st.button(f'重新整理', use_container_width=True):
                 pass
             st.success(f'{all_data} 建立成功')

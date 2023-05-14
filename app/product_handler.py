@@ -1,11 +1,11 @@
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey, Enum, Float
 from sqlalchemy.orm import sessionmaker, declarative_base, validates
 import pandas as pd
-from models import MyBase
+from app.models import MyBase
 
 class ProductHandler(MyBase):
     def __init__(self) -> None:
-        super().__init__('sqlite:///goods.db')
+        super().__init__('sqlite:///data/goods.db')
 
     # 创建商品记录的函数
     def create_product(self, name:str, color:str=None, size:str=None, photo_path:str=None) -> None:
@@ -113,10 +113,10 @@ class ProductHandler(MyBase):
             for i in ph.get_product_data().id.sample(10).values:
                 for t in type:
                     for s in supplier:
-                        m = 2 if t == 'IN' else 1
+                        m = 5 if t == 'IN' else 6
                         ph.create_product＿detail(i, 
                                                  pd.Series([50,100,150]).sample(1).values[0] * m, 
-                                                 500 + pd.Series([100,500,1500]).sample(1).values[0], 
+                                                 pd.Series([100,500,1500]).sample(1).values[0], 
                                                  t, 
                                                  s,
                                                  detail_ts=pd.Timestamp.now() - pd.Timedelta(days.sample(1).values[0]*m, 'day')

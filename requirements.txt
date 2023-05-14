@@ -1,0 +1,7 @@
+streamlit=1.21.0
+SQLAlchemy=2.0.9
+pytest=7.3.1
+pytest-cov=4.0.0
+pandas=1.5.2
+numpy=1.23.4
+plotly=5.11.0
